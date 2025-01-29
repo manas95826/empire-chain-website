@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,4 +19,259 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'EditUndo';
+  src: url('/edit-undo.dot-brk.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EditDot';
+  src: url('/fonts/EditDot.woff2') format('woff2'),
+       url('/fonts/EditDot.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Updated logo and navbar styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-container img {
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: var(--background);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.dot-matrix {
+  background-image: 
+    radial-gradient(
+      circle at 2px 2px,
+      #666 1px,
+      transparent 0
+    );
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+
+.dot-matrix::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: -1;
+}
+
+.scrolling-text {
+  font-family: 'EditUndo', sans-serif;
+}
+
+.get-started-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.get-started-btn:hover::after {
+  transform: translateX(100%);
+}
+
+/* Mobile Menu Animations */
+.mobile-menu {
+  animation: slideIn 0.3s ease-out;
+  transform-origin: top right;
+}
+
+.mobile-menu-item {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.mobile-menu-item:nth-child(1) { animation-delay: 0.1s; }
+.mobile-menu-item:nth-child(2) { animation-delay: 0.2s; }
+.mobile-menu-item:nth-child(3) { animation-delay: 0.3s; }
+.mobile-menu-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Enhanced mobile menu shadows */
+.mobile-menu {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Remove or comment out these animations as they're no longer needed */
+/* @keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+} */
+
+@keyframes typing {
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+  }
+}
+
+.typing-animation {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  white-space: pre !important;
+  color: #FFFFFF; /* Changed from #FFD700 to white */
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.typing-animation[data-scroll-animate] {
+  width: 0;
+  animation: none;
+  border-right: none;
+}
+
+.typing-animation[data-scroll-animate].animate {
+  width: 0;
+  animation: typing 1.5s steps(40, end) forwards;
+}
+
+@keyframes typing {
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+  }
+}
+
+.code-container {
+  position: relative;
+  overflow: hidden;
+  min-width: 300px;
+}
+
+.code-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+pre {
+  tab-size: 4;
+  -moz-tab-size: 4;
+  white-space: pre !important;
+}
+
+code {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  display: inline-block;
+  min-width: 100%;
+}
+
+/* Add JetBrains Mono font */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
