@@ -16,15 +16,15 @@ const features = [
 ];
 
 const integrations = [
-  { name: "OpenAI", logo: "/integrations/openai.png?v=2" },
-  { name: "Claude", logo: "/integrations/claude.png?v=2" },
-  { name: "Gemini", logo: "/integrations/gemini.jpg?v=2" },
-  { name: "Phidata", logo: "/integrations/phidata.png?v=2" },
+  { name: "OpenAI", logo: "/integrations/openai.svg?v=2" },
+  { name: "Claude", logo: "/integrations/anthropic.svg?v=2" },
+  { name: "Gemini", logo: "/integrations/gemini.png?v=2" },
+  { name: "Agno", logo: "/integrations/agno.png?v=2" },
   { name: "Chroma", logo: "/integrations/chroma.png?v=2" },
-  { name: "Groq", logo: "/integrations/groq.png?v=2" },
-  { name: "Github", logo: "/integrations/github.png?v=2" },
+  { name: "Groq", logo: "/integrations/groq-wh.png?v=2" },
+  { name: "Github", logo: "/integrations/github-white.png" },
   { name: "Qdrant", logo: "/integrations/qdrant.png?v=2" },
-  { name: "Streamlit", logo: "/integrations/streamlit.png?v=2" },
+  { name: "Streamlit", logo: "/integrations/streamlit-white.png?v=2" },
 ];
 
 export default function Home() {
@@ -120,41 +120,57 @@ export default function Home() {
       </section>
 
       {/* Updated Integrations section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#111827] mb-6">
-            Integrations
-          </h2>
-          <p className="text-xl sm:text-2xl text-[#4B5563] mt-4 max-w-3xl mx-auto">
-            Seamlessly integrate with the most powerful AI platforms and tools
-          </p>
-        </div>
+      <section className="bg-gradient-to-br from-black via-[#111827] to-black max-w-full px-4 sm:px-6 lg:px-8 py-24 relative overflow-hidden">
+        {/* Animated background effect */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_200px,#ffffff0d,transparent)]"></div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-12 place-items-center">
-            {integrations.map((integration) => (
-              <div
-                key={integration.name}
-                className="group relative w-[180px] h-[100px] flex items-center justify-center bg-white rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <Image
-                  src={integration.logo}
-                  alt={`${integration.name} logo`}
-                  width={140}
-                  height={50}
-                  className="object-contain transition-all duration-300 
-                    filter grayscale hover:grayscale-0 opacity-75 hover:opacity-100 
-                    group-hover:scale-105"
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                    maxHeight: '50px'
-                  }}
-                  priority
-                  unoptimized={true}
-                />
-              </div>
-            ))}
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 relative">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white">
+                Integrations
+              </span>
+            </h2>
+            <p className="text-xl sm:text-2xl text-gray-300 mt-4 max-w-3xl mx-auto">
+              Seamlessly integrate with the most powerful AI platforms and tools
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-12 place-items-center">
+              {integrations.map((integration) => (
+                <div
+                  key={integration.name}
+                  className="group relative w-[180px] h-[100px] flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl p-6 
+                    hover:shadow-[0_0_25px_-5px] hover:shadow-blue-500/20 
+                    after:absolute after:inset-0 after:z-0 after:bg-gradient-to-br after:from-transparent after:via-transparent after:to-black/20 after:rounded-xl
+                    before:absolute before:inset-[1px] before:z-[1] before:bg-gradient-to-br before:from-gray-900 before:via-gray-800 before:to-gray-900 before:rounded-xl
+                    transition-all duration-300 hover:scale-105"
+                >
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                    <Image
+                      src={integration.logo}
+                      alt={`${integration.name} logo`}
+                      width={140}
+                      height={50}
+                      className="object-contain transition-all duration-500 
+                        opacity-75 group-hover:opacity-100 
+                        group-hover:scale-105
+                        animate-shimmer"
+                      style={{
+                        maxWidth: '100%',
+                        height: 'auto',
+                        maxHeight: '50px',
+                        filter: 'brightness(1.2) contrast(1.1)'
+                      }}
+                      priority
+                      unoptimized={true}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -162,7 +178,7 @@ export default function Home() {
       {/* Code Example Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative">
         {/* Desktop Agents text */}
-        <div className="hidden lg:block absolute left-0 top-[60%] -translate-y-1/2 -rotate-90 text-4xl text-gray-400 lg:-left-[3rem] scrolling-text">
+        <div className="hidden lg:block absolute left-0 top-[60%] -translate-y-1/2 -rotate-90 text-4xl text-gray-400 lg:left-[2rem] scrolling-text">
           Agents
         </div>
         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-center text-[#111827]">

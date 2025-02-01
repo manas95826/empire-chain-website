@@ -275,3 +275,19 @@ code {
   font-weight: normal;
   font-style: normal;
 }
+
+@keyframes shimmer {
+  0% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.2) contrast(1.1);
+  }
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
