@@ -58,7 +58,7 @@ const Navbar = () => {
                   className="w-5 h-5"
                 />
                 <span>Downloads</span>
-                <span className="bg-gray-100 px-2 py-0.5 rounded-full text-sm">13.16k</span>
+                <span className="bg-gray-100 px-2 py-0.5 rounded-full text-sm">14k</span>
               </Link>
             </div>
           </div>
@@ -134,7 +134,7 @@ const Navbar = () => {
                       className="w-4 h-4"
                     />
                     <span>Downloads</span>
-                    <span className="bg-gray-100 px-2 py-0.5 rounded-full text-xs ml-auto">13.16k</span>
+                    <span className="bg-gray-100 px-2 py-0.5 rounded-full text-xs ml-auto">14k</span>
                   </span>
                 </Link>
                 
